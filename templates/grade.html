@@ -1,0 +1,45 @@
+<!-- templates/grade.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Student Management</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+<body>
+    <h1>Student Grades</h1>
+
+    <!-- Control structure: for loop -->
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Grade</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.grade }}%</td>
+                
+                <!-- Control structure: if-else -->
+                <td>
+                    {% if student.grade >= passing_grade %}
+                        Passing
+                    {% else %}
+                        Failing
+                    {% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3">No students found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
