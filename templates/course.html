@@ -2,48 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Library Management</title>
+    <title>course Management</title>
     <link rel="stylesheet" href="/static/st.css">
 </head>
 <body>
-    <h1>Library Management</h1>
+    <h1>course Management</h1>
     
-    <!-- Display list of books -->
-    <h2>All Books</h2>
+    <!-- Display list of course_tab -->
+    <h2>All course_tab</h2>
     <ul>
-        {% for book in books %}
-            <li>ID: {{ book[0] }}, Title: {{ book[1] }}, Author: {{ book[2] }}, Year: {{ book[3] }}</li>
+        {% for course in course_tab %}
+            <li>ID: {{ course[0] }}, Title: {{ course[1] }}, instructor: {{ course[2] }}, price: {{ course[3] }}</li>
         {% endfor %}
     </ul>
 
-    <!-- Add a new book -->
-    <h2>Add Book</h2>
+    <!-- Add a new course -->
+    <h2>Add course</h2>
     <form action="/add" method="post">
         Title: <input type="text" name="title" required><br>
-        Author: <input type="text" name="author" required><br>
-        Year: <input type="number" name="year" required><br>
-        <input type="submit" value="Add Book">
+        instructor: <input type="text" name="instructor" required><br>
+        price: <input type="number" name="price" required><br>
+        <input type="submit" value="Add course">
     </form>
 
-    <!-- Update a book -->
-    <h2>Update Book</h2>
+    <!-- Update a course -->
+    <h2>Update course</h2>
     <form action="/update" method="post">
         ID: <input type="number" name="id" required><br>
         Title: <input type="text" name="title"><br>
-        Author: <input type="text" name="author"><br>
-        Year: <input type="number" name="year"><br>
-        <input type="submit" value="Update Book">
+        instructor: <input type="text" name="instructor"><br>
+        price: <input type="number" name="price"><br>
+        <input type="submit" value="Update course">
     </form>
 
-    <!-- Delete a book -->
-    <h2>Delete Book</h2>
+    <!-- Delete a course -->
+    <h2>Delete course</h2>
     <form action="/delete" method="post">
         ID: <input type="number" name="id" required><br>
-        <input type="submit" value="Delete Book">
+        <input type="submit" value="Delete course">
     </form>
 
-    <!-- Search for books -->
-    <h2>Search Books</h2>
+    <!-- Search for course_tab -->
+    <h2>Search course_tab</h2>
     <form action="/search" method="get">
         Query: <input type="text" name="query"><br>
         <input type="submit" value="Search">
@@ -60,9 +60,9 @@
                 .then(data => {
                     const resultsDiv = document.getElementById('search-results');
                     resultsDiv.innerHTML = '';
-                    data.forEach(book => {
+                    data.forEach(course => {
                         const listItem = document.createElement('li');
-                        listItem.textContent = `ID: ${book[0]}, Title: ${book[1]}, Author: ${book[2]}, Year: ${book[3]}`;
+                        listItem.textContent = `ID: ${course[0]}, Title: ${course[1]}, instructor: ${course[2]}, price: ${course[3]}`;
                         resultsDiv.appendChild(listItem);
                     });
                 });
