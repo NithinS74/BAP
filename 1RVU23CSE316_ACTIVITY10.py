@@ -36,14 +36,14 @@ def update_course():
     price = int(request.form['price'])
     with sqlite3.connect('course.db') as conn:
         conn.execute('UPDATE course_tab SET title = ?, instructor = ?, price = ? WHERE id = ?', (title, instructor, price, course_id))
-    return 'course updated successfully!'
+    return redirect(url_for('home'))
 
 @app.route('/delete', methods=['POST'])
 def delete_course():
     course_id = int(request.form['id'])
     with sqlite3.connect('course.db') as conn:
         conn.execute('DELETE FROM course_tab WHERE id = ?', (course_id,))
-    return 'course deleted successfully!'
+    return redirect(url_for('home'))
 
 @app.route('/search', methods=['GET'])
 def search_course_tab():
@@ -54,4 +54,4 @@ def search_course_tab():
 
 if __name__ == '__main__':
     init_db()
-    app.run(port=10000)
+    app.run(port=9001)
