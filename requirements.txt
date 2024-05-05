@@ -1,2 +1,2 @@
-1. Flask
-2. Gunicorn
+Flask
+Gunicorn
