@@ -54,4 +54,4 @@ def search_course_tab():
 
 if __name__ == '__main__':
     init_db()
-    app.run(port=9001)
+    app.run(port=10000)
